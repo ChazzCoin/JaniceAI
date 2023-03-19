@@ -73,10 +73,10 @@ def evaluate(model, criterion, postprocessors, data_loader, base_ds, device, out
     metric_logger.add_meter('class_error', utils.SmoothedValue(window_size=1, fmt='{value:.2f}'))
     header = 'Test:'
 
-    coco_evaluator = None
-    # iou_types = tuple(k for k in ('segm', 'bbox') if k in postprocessors.keys())
-    # coco_evaluator = CocoEvaluator(base_ds, iou_types)
-    # coco_evaluator.coco_eval[iou_types[0]].params.iouThrs = [0, 0.1, 0.5, 0.75]
+    # coco_evaluator = None
+    iou_types = tuple(k for k in ('segm', 'bbox') if k in postprocessors.keys())
+    coco_evaluator = CocoEvaluator(base_ds, iou_types)
+    coco_evaluator.coco_eval[iou_types[0]].params.iouThrs = [0, 0.1, 0.5, 0.75]
 
     panoptic_evaluator = None
     if 'panoptic' in postprocessors.keys():

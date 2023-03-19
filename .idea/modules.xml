@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/DETR.iml" filepath="$PROJECT_DIR$/.idea/DETR.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../FairSystems/FairDocs/.idea/FairDocs.iml" filepath="$PROJECT_DIR$/../FairSystems/FairDocs/.idea/FairDocs.iml" />
     </modules>
   </component>
 </project>

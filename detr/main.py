@@ -19,7 +19,6 @@ from datasets import build_dataset, get_coco_api_from_dataset
 from engine import evaluate, train_one_epoch
 from models import build_model
 
-
 def get_args_parser():
     parser = argparse.ArgumentParser('Set transformer detector', add_help=False)
     parser.add_argument('--lr', default=1e-4, type=float)
@@ -83,11 +82,11 @@ def get_args_parser():
 
     # dataset parameters
     parser.add_argument('--dataset_file', default='construction')
-    parser.add_argument('--data_path', default="/Users/chazzromeo/Desktop/dataset/trainChazz", type=str)
+    parser.add_argument('--data_path', default="/Users/chazzromeo/Desktop/JaniceData/dataset/trainChazz", type=str)
     parser.add_argument('--data_panoptic_path', type=str)
     parser.add_argument('--remove_difficult', action='store_true')
 
-    parser.add_argument('--output_dir', default="/Users/chazzromeo/Desktop/output",
+    parser.add_argument('--output_dir', default="/Users/chazzromeo/Desktop/JaniceData/output",
                         help='path where to save, empty for no saving')
     parser.add_argument('--device', default='cpu',
                         help='device to use for training / testing')
@@ -95,7 +94,7 @@ def get_args_parser():
     parser.add_argument('--resume', default="https://dl.fbaipublicfiles.com/detr/detr-r50-e632da11.pth", help='resume from checkpoint')
     parser.add_argument('--start_epoch', default=0, type=int, metavar='N',
                         help='start epoch')
-    parser.add_argument('--eval', default=True, action='store_true')
+    parser.add_argument('--eval', default=False, action='store_true')
     parser.add_argument('--num_workers', default=1, type=int)
 
     # distributed training parameters
@@ -247,11 +246,11 @@ def main(args):
                                    output_dir / "eval" / name)
 
         # To copy checkpoint to drive in Colab
-        os.makedirs(f'/Users/chazzromeo/Desktop/checkpoints/{args.dataset_file}/{epoch}', exist_ok=True)
+        os.makedirs(f'/Users/chazzromeo/Desktop/JaniceData/checkpoints/{args.dataset_file}/{epoch}', exist_ok=True)
 
         # copy
-        toDirectory = f'/Users/chazzromeo/Desktop/checkpoints/{args.dataset_file}/{epoch}'
-        fromDirectory = "/Users/chazzromeo/Desktop/outputs/"
+        toDirectory = f'/Users/chazzromeo/Desktop/JaniceData/checkpoints/{args.dataset_file}/{epoch}'
+        fromDirectory = "/Users/chazzromeo/Desktop/JaniceData/outputs/"
 
         copy_tree(fromDirectory, toDirectory)
 
